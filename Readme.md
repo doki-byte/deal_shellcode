@@ -4,6 +4,8 @@
 
 目前集成模板15个，后续将增加新的处理模式。
 
+本项目仅供研究学习使用，请勿非法使用，造成的影响与作者无关
+
 ### 环境准备
 
 wails采用webview2运行，当系统不存在时会自动下载
@@ -18,15 +20,14 @@ wails采用webview2运行，当系统不存在时会自动下载
 
    ~~~
    go env -w CGO_ENABLED=1
+   go env -w GO111MODULE=on
+   go env -w GOPROXY=https://goproxy.cn
    ~~~
 
 3. 下载go依赖包
 
    ~~~
-   go get github.com/gonutz/ide
-   go get github.com/mitchellh/go-ps
-   go get golang.org/x/sys
-   go get github.com/spf13/cobra
+   go install golang.org/x/sys/windows@latest
    ~~~
 
 4. 下载gcc
@@ -35,13 +36,16 @@ wails采用webview2运行，当系统不存在时会自动下载
 https://blog.csdn.net/qq_45876765/article/details/132586631
 ~~~
 
+虚拟机测试环境为：
+
+~~~
+go	1.23.4 
+gcc	14.2.0
+~~~
+
+![image-20241212095957883](images/image-20241212095957883.png)
+
 ### 使用教程
-
-下载程序
-
-~~~
-https://github.com/doki-byte/deal_shellcode/releases/download/v1.0/ShellCode.rar
-~~~
 
 双击打开
 
