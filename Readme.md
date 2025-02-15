@@ -1,6 +1,7 @@
 ### 前言
 
 项目目前集成至Easytools工具箱中，欢迎大家下载使用。
+https://github.com/doki-byte/EasyTools
 
 目前支持5种运行模式、2种加密方式、2种编译方式，后续将增加新的处理模式。
 
