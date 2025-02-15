@@ -1,13 +1,10 @@
 ### 前言
 
-分享一个最近折腾了好久的shellcode免杀处理平台，平台采用wails进行打包，windows用户双击即可运行生成所需文件。
+项目目前集成至Easytools工具箱中，欢迎大家下载使用。
 
-目前集成模板15个，后续将增加新的处理模式。
+目前支持5种运行模式、2种加密方式、2种编译方式，后续将增加新的处理模式。
 
-本项目仅供研究学习使用，请勿非法使用，造成的影响与作者无关
-
-注：目前生成可过windows define、火绒(需要修改cs流量特征)
-   360目前不行，后续进行更新（20241220）
+![image-20250216010652290](images/image-20250216010652290.png)
 
 ### 环境准备
 
@@ -17,63 +14,91 @@ wails采用webview2运行，当系统不存在时会自动下载
 
 <img src="images/image-20241211232457173.png" alt="image-20241211232457173" style="zoom: 67%;" />
 
-1. 程序采用go生成文件，需要先行安装go环境
+1. **程序采用go生成文件，需要先行安装go环境**
 
-2. 设置go环境变量
+2. **设置go环境变量**
 
    ~~~
    go env -w CGO_ENABLED=1
    go env -w GO111MODULE=on
-   go env -w GOPROXY=https://goproxy.cn
+   go env -w GOPROXY=https://goproxy.cn,direct
    ~~~
 
-3. 下载go依赖包
+3. **初始化项目**
 
    ~~~
-   go install golang.org/x/sys/windows@latest
+   go mod init Easytools
    ~~~
 
-4. 下载gcc
+4. **下载go依赖包**
+
+   ~~~
+   go get golang.org/x/sys
+   go install mvdan.cc/garble@latest
+   ~~~
+
+   下载好之后，程序运行目录为如下所示即可
+
+   ![image-20250216004025483](images/image-20250216004025483.png)
+
+4. **下载gcc**
 
 ~~~
-https://blog.csdn.net/qq_45876765/article/details/132586631
+链接: https://pan.baidu.com/s/1EAgK403iRqJXjRvAKVqhIA?pwd=unka 提取码: unka
 ~~~
 
-虚拟机测试环境为：
+​	5.1.1 解压缩文件到**系统任意目录**
+
+![image-20250216003157088](images/image-20250216003157088.png)
+
+​	5.1.2 设置环境变量
+
+![image-20250216003345646](images/image-20250216003345646.png)
+
+​	重新打开 CMD 窗口，输入 gcc -v，如果能正确看到版本号，说明安装成功。
+
+​	虚拟机测试环境为：
 
 ~~~
-go	1.23.4 
-gcc	14.2.0
+go	v1.24.0
+gcc	v14.2.0
+garble v0.14.1
 ~~~
 
-![image-20241212095957883](images/image-20241212095957883.png)
+![image-20250216003812834](images/image-20250216003812834.png)
 
 ### 使用教程
 
-双击打开
+双击打开Easytools，选择免杀生成
 
-![image-20241211231335494](images/image-20241211231335494.png)
+![image-20250216004224051](images/image-20250216004224051.png)
 
-上传生成的bin文件
+选择需要处理的bin文件，拖拽进行处理
 
-点击处理bin文件
+选择运行模式、加密方式、需要规避的杀软类型、编译方式
 
-![image-20241211232211811](images/image-20241211232211811.png)
+目前支持5种运行模式、2种加密方式、2种编译方式
 
-点击编译生成，等待生成完成即可
+![image-20250216004517112](images/image-20250216004517112.png)
 
-![image-20241211232233468](images/image-20241211232233468.png)
+选择完成之后，点击处理bin文件、然后编译生成
 
-### 查杀结果
+针对360Qvm报毒，可以点击bypassQvm一键对生成的文件进行处理
 
-![image-20241211232351810](images/image-20241211232351810.png)
+![image-20250216004206904](images/image-20250216004206904.png)
 
-![image-20241211232645708](images/image-20241211232645708.png)
+处理完的文件在EasyToolsFiles/file目录下，可以点击下方按钮一键打开
 
-**360部分会报QVM，添加数字证书和资源文件即可**
+![image-20250216004722730](images/image-20250216004722730.png)
 
-![image-20241211233130458](images/image-20241211233130458.png)
+### 免杀监测
 
-云传结果
+tips：生成文件存在黑窗口，需要手动处理一下
 
-![image-20241211233211353](images/image-20241211233211353.png)
+推荐编译方式使用garble，有点慢，请耐心等待
+
+![image-20250216005225024](images/image-20250216005225024.png)
+
+![image-20250216005309639](images/image-20250216005309639.png)
+
+![image-20250216005335894](images/image-20250216005335894.png)
