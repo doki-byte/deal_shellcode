@@ -16,8 +16,11 @@ wails采用webview2运行，当系统不存在时会自动下载
 <img src="images/image-20241211232457173.png" alt="image-20241211232457173" style="zoom: 67%;" />
 
 1. **程序采用go生成文件，需要先行安装go环境**
+2. **下载安装本地git环境**
+![image](https://github.com/user-attachments/assets/6ac1cf5e-c5bf-4671-8abc-2e038e2100cf)
 
-2. **设置go环境变量**
+
+3. **设置go环境变量**
 
    ~~~
    go env -w CGO_ENABLED=1
@@ -25,13 +28,13 @@ wails采用webview2运行，当系统不存在时会自动下载
    go env -w GOPROXY=https://goproxy.cn,direct
    ~~~
 
-3. **初始化项目**
+4. **初始化项目**
 
    ~~~
    go mod init Easytools
    ~~~
 
-4. **下载go依赖包**
+5. **下载go依赖包**
 
    ~~~
    go get golang.org/x/sys
