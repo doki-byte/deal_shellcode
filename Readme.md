@@ -5,7 +5,7 @@ https://github.com/doki-byte/EasyTools
 
 目前支持5种运行模式、2种加密方式、2种编译方式，后续将增加新的处理模式。
 
-![image-20250216010652290](images/image-20250216010652290.png)
+![image](https://github.com/user-attachments/assets/6c5d57dc-4b1a-47e3-ba71-69c22a261e19)
 
 ### 环境准备
 
